@@ -42,19 +42,26 @@ bool isInRange(IOBluetoothDevice *device, int timeOut, int sigThreshold, bool wa
 void inRangeAction(NSString *scenario)
 {
     NSLog(@"Running in-range action");
-    NSString *command = [NSString stringWithFormat:@"osascript ~/Work/UnixUtil/%@/inRange.scpt", scenario];
+    NSString *command = [NSString stringWithFormat:@"osascript ~/Work/UnixUtil/BluetoothUnlock/Scenarios/%@/inRange.scpt", scenario];
     system([command UTF8String]);
 }
 
 void outRangeAction(NSString *scenario)
 {
     NSLog(@"Running out-range action");
-    NSString *command = [NSString stringWithFormat:@"osascript ~/Work/UnixUtil/%@/outRange.scpt", scenario];
+    NSString *command = [NSString stringWithFormat:@"osascript ~/Work/UnixUtil/BluetoothUnlock/Scenarios/%@/outRange.scpt", scenario];
     system([command UTF8String]);
+}
+
+void sig_handler(int sig)
+{
+    if (sig == SIGINT) NSLog(@"Received SIGINT");
 }
 
 int main(int argc, const char * argv[])
 {
+    signal(SIGINT, sig_handler);
+    
     IOBluetoothDevice *targetDevice = nil;
     NSArray *pairedDevices = [IOBluetoothDevice pairedDevices];
     for(IOBluetoothDevice *device in pairedDevices){
@@ -63,7 +70,7 @@ int main(int argc, const char * argv[])
             targetDevice = device; break;
         }
     }
-    
+
     Boolean inRange = false; outRangeAction(SCENARIO);
     while (true) {
         system("sleep 0.5");

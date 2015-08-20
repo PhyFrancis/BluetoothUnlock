@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>46908C7B-AA40-44A5-BB0E-129D29B3C7CB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>BluetoothUnlock</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7446FF679CFF744C2272A1EFCDD868A4F4909B56</key>
 		<string>github.com:PhyFrancis/BluetoothUnlock.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>BluetoothUnlock.xcodeproj/project.xcworkspace</string>
+	<string>BluetoothUnlock.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7446FF679CFF744C2272A1EFCDD868A4F4909B56</key>
