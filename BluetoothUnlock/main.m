@@ -10,7 +10,9 @@
 #import <IOBluetooth/IOBluetooth.h>
 
 NSString *TARGET = @"Galaxy Nexus";
+
 NSString *SCENARIO = @"lock_unlock_scenario";
+// NSString *SCENARIO = @"intellij_scenario";
 
 int TIME_OUT = 1000; // in unit of milli-second
 int SIG_THRESHOLD = -60; // the threshold signal strength in unit of db
