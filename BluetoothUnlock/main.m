@@ -11,8 +11,9 @@
 
 NSString *TARGET = @"Galaxy Nexus";
 
-NSString *SCENARIO = @"lock_unlock_scenario";
+// NSString *SCENARIO = @"lock_unlock_scenario";
 // NSString *SCENARIO = @"intellij_scenario";
+NSString *SCENARIO = @"current_scenario"; // symbolic link
 
 int TIME_OUT = 1000; // in unit of milli-second
 int SIG_THRESHOLD = -60; // the threshold signal strength in unit of db
@@ -25,6 +26,7 @@ bool isInRangeSingle(IOBluetoothDevice *device, int timeOut, int sigThreshold, b
     IOReturn ioRet = [device openConnection:nil withPageTimeout:timeOut authenticationRequired:false];
     if (ioRet != kIOReturnSuccess) {
         NSLog(@"disconnected");
+        [device closeConnection];
         return false;
     }
     else {
@@ -58,6 +60,7 @@ void outRangeAction(NSString *scenario)
 void sig_handler(int sig)
 {
     if (sig == SIGINT) NSLog(@"Received SIGINT");
+    exit(SIGINT);
 }
 
 int main(int argc, const char * argv[])
